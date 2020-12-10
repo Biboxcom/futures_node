@@ -7,6 +7,30 @@ getFills = async () => {
     try {
         let fills = await client.getFills( "35184377957292" );
         console.log( fills );
+        // {
+        //     count: 1,
+        //     page: 1,
+        //     items: [
+        //     {
+        //         id: '1125899906853443005',
+        //         orderId: '35184377957292',
+        //         symbol: '5ETH_USD',
+        //         tradeAction: 'ENTRY',
+        //         tradeSide: 'LONG',
+        //         price: '472.6900000000',       // 成交价格
+        //         orderPrice: '479.2200000000',  // 挂单价格
+        //         quantity: '10.0000000000',     // 成交数量
+        //         isMaker: false,
+        //         time: 1605784674000,
+        //         fee: {
+        //              value:"0",
+        //              inBix:"0",                 // bix抵扣
+        //              inCoupon:"0"               // 优惠卷抵扣
+        //         }
+        //     }
+        // ]
+        // }
+
     }catch ( e ) {
         console.log( e );
     }

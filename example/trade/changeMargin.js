@@ -6,7 +6,9 @@ const client = new BiboxFuturesClient( apiKey, secretKey );
 changeMarginMode = async () => {
     try {
         await client.changeMarginMode( "ETH_USD", MarginMode.ISOLATED );
+
         await client.changeLeverage( "ETH_USD", TradeSide.LONG, 12 );
+
     } catch ( e ) {
         console.log( e );
     }

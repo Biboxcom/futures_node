@@ -6,6 +6,7 @@ const client = new BiboxFuturesClient( apiKey, secretKey );
 subscribeOrder = () => {
     client.subscribeOrder(  ( data ) => {
         console.log( data );
+        // []
     } );
 };
 subscribeOrder();

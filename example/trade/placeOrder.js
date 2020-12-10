@@ -12,6 +12,7 @@ placeOrder = async () => {
             tradeAction: TradeAction.ENTRY
         } );
         console.log( orderId1 );
+
         let orderId2 = await client.placeLimitOrder( {
             symbol: "ETH_USD",
             quantity: 1,
@@ -20,6 +21,7 @@ placeOrder = async () => {
             tradeAction: TradeAction.ENTRY
         } );
         console.log( orderId2 );
+
     }catch ( e ) {
         console.log( e );
     }

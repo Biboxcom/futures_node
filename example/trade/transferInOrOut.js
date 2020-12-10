@@ -8,6 +8,7 @@ transferInOrOut = async () => {
         await client.transferIn( "ETH", 0.0001 );
 
         await client.transferOut( "ETH", 0.0001 );
+
     }catch ( e ) {
         console.log( e );
     }

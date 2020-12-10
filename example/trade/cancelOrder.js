@@ -8,6 +8,7 @@ cancelOrder = async () => {
         await client.cancelOrder( "28587322968618" );
         // await client.cancelAllOrders( "ETH_USD" );
         // await client.cancelOrders( [ 28587322968618 ] );
+
     }catch ( e ) {
         console.log( e );
     }

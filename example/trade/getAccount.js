@@ -7,8 +7,16 @@ getAccount = async () => {
     try {
         let accounts = await client.getAccounts();
         console.log( accounts );
+
         let account = await client.getAccount( "ETH" );
         console.log( account );
+        // {
+        //     asset: 'LTC',
+        //     available: '0.198015884', // 可用
+        //     orderMargin: '0',         // 挂单冻结
+        //     positionMargin: '0'       // 仓位保证金
+        // }
+
     }catch ( e ) {
         console.log( e );
     }

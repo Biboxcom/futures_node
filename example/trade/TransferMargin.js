@@ -6,6 +6,7 @@ const client = new BiboxFuturesClient( apiKey, secretKey );
 transferMargin = async () => {
     try {
         await client.transferMargin( "ETH_USD", TradeSide.LONG, 1 );
+
     }catch ( e ) {
         console.log( e );
     }

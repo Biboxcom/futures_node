@@ -559,6 +559,7 @@ class BiboxFuturesClient extends BiboxFuturesClientBase {
             "type": 1
         } );
     }
+
     /**
      * 提交委限价托单
      * @param symbol 合约名称
@@ -1537,7 +1538,7 @@ class JsonUtil {
                     change: item.hold_coin_dx,
                     currentQty: item.hold_coin,
                     price: item.price_log,
-                    avgPrice: item.price_open,
+                    entryPrice: item.price_open,
                     profit: item.profit,
                     fee: {
                         value: item.fee,
