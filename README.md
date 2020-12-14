@@ -1,12 +1,25 @@
-bibox-futures-client 
-===========================
-#### 简介
-Bibox平台币本位合约SDK
-#### 环境依赖
-node v14+
 
-#### 使用方法
-        
+<h1 align="center">Welcome to Bibox Futures Client 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-v1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+</p>
+
+> Bibox平台币本位合约Nodejs版本SDK
+
+### 🏠 [Homepage](https://futures.bibox.me/zh/futures)
+
+## Dependency
+
+```sh
+需要 node v14+
+```
+
+## Usage
+
+```sh
         // 新建客户端对象 公开的api可以不传apiKey与secretKey
         const { BiboxFuturesClient  } = require( "../../biboxFuturesClient" );
         const apiKey = "Your apiKey";
@@ -49,10 +62,17 @@ node v14+
         } );
         
         // 更多的可以参考测试用例
+```
+
+## Author
+
+👤 **Biboxcom**
+
+* Website: https://github.com/Biboxcom
+* Github: [@Biboxcom](https://github.com/Biboxcom)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
 
 
-
-
-
-#### V1.0.0 版本内容更新
-无
