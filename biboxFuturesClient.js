@@ -308,8 +308,9 @@ class BiboxFuturesClientBase {
     }
 
     _heartbeat = () => {
-        if ( !this._pingTimeout ) return;
-        clearTimeout( this._pingTimeout );
+        if ( this._pingTimeout ) {
+            clearTimeout( this._pingTimeout );
+        }
 
         this._pingTimeout = setTimeout( () => {
             this._wss.terminate();
