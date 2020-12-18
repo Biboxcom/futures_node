@@ -8,10 +8,10 @@ getOrders = async () => {
         let order = await client.getOrder( "35184377957292" );
         console.log( order );
         // {
-        //     clientOrderId: 0,
-        //     orderId: 35184377957292,
+        //     clientOrderId: 0,             // 用户自定义id
+        //     orderId: 35184377957292,      // 订单id
         //     symbol: '5ETH_USD',
-        //     price: '479.2200000000',
+        //     price: '479.2200000000',      // 价格
         //     quantity: '10.0000000000',    // 挂单数量
         //     orderMargin: '0.0000000000',
         //     avgPrice: '472.6900000000',   // 平均成交价
@@ -19,13 +19,13 @@ getOrders = async () => {
         //     tradeCount: 1,                // 成交次数
         //     failReason: 0,
         //     fee: {
-        //     value: '0.0000116355',
-        //         inBix: '0.0000000000',
-        //         inCoupon: '0.0000000000'
+        //         value: '0.0000116355',      // 手续费数量
+        //         inBix: '0.0000000000',      // bix抵扣数量
+        //         inCoupon: '0.0000000000'    // 优惠数量
         //     },
-        //     action: 'ENTRY',
-        //     side: 'LONG',
-        //     orderStatus: 'FILLED',
+        //     action: 'ENTRY',                 // 开仓或平仓
+        //     side: 'LONG',                    // 订单方向
+        //     orderStatus: 'FILLED',           // 订单状态
         //     makerFee: '0.0002000000',
         //     takerFee: '0.0005500000',
         //     createTime: 1605784674000,

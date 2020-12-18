@@ -967,15 +967,15 @@ class Subscription {
     _getData = () => {
         throw "Not implemented";
     };
-    
+
     onMessage = ( msg ) => {
         let obj = this._decode( msg );
         this._onData( obj );
         this._notifyUpdate();
     };
-    
+
     _notifyUpdate = () => {
-        if( this._notified ) return;
+        if ( this._notified ) return;
         this._notified = true;
         setImmediate( () => {
             this._listener( this._getData() );
@@ -1007,7 +1007,7 @@ class CandlestickSubscription extends Subscription {
         this._data = [];
         return data;
     };
-    
+
     static buildChannelName = ( symbol, interval ) => {
         return `bibox_sub_spot_${ symbol }_kline_${ interval }`;
     };
@@ -1508,7 +1508,7 @@ class JsonUtil {
             return JsonUtil.positionWrapper( item );
         } );
     };
-    
+
     static positionWrapper = ( obj ) => {
         return {
             symbol: obj.pi,
@@ -1657,7 +1657,7 @@ class JsonUtil {
             price: obj.dp,
             orderPrice: obj.p,
             quantity: obj.ep,
-            isMaker:!!obj.im,
+            isMaker: !!obj.im,
             time: obj.t,
             fee: {
                 value: obj.f,
@@ -1669,18 +1669,18 @@ class JsonUtil {
 
     static orderEventWrapper = ( obj ) => {
         return {
-            orderId:obj.oi,
-            clientOrderId:obj.coi,
-            symbol:obj.pi,
-            orderMargin:obj.fz,
+            orderId: obj.oi,
+            clientOrderId: obj.coi,
+            symbol: obj.pi,
+            orderMargin: obj.fz,
             createTime: obj.t,
-            userId:obj.ui,
+            userId: obj.ui,
             failReason: obj.r,
             quantity: obj.q,
             price: obj.p,
             executedQty: obj.eq,
             avgPrice: obj.dp,
-            action:ApiTradeAction.fromOrderSide( obj.sd ),
+            action: ApiTradeAction.fromOrderSide( obj.sd ),
             side: ApiTradeSide.fromOrderSide( obj.sd ),
             status: ApiOrderStatus.fromInteger( obj.s ),
             fee: {
@@ -1694,17 +1694,17 @@ class JsonUtil {
     static PositionUpdateEventWrapper = ( obj ) => {
         return {
             id: obj.id,
-            userId:obj.user_id,
-            type:ApiPositionUpdateType.fromInteger( obj.type ),
-            marginMode:ApiMarginMode.fromInteger( obj.mode ),
-            side:ApiTradeSide.fromInteger( obj.order_side ),
-            symbol:obj.pair,
-            price:obj.price,
-            change:obj.hold_dx,
-            time:obj.time
+            userId: obj.user_id,
+            type: ApiPositionUpdateType.fromInteger( obj.type ),
+            marginMode: ApiMarginMode.fromInteger( obj.mode ),
+            side: ApiTradeSide.fromInteger( obj.order_side ),
+            symbol: obj.pair,
+            price: obj.price,
+            change: obj.hold_dx,
+            time: obj.time
         };
     };
-    
+
 }
 
 module.exports = {

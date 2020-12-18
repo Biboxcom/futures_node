@@ -15,8 +15,8 @@ getFills = async () => {
         //         id: '1125899906853443005',
         //         orderId: '35184377957292',
         //         symbol: '5ETH_USD',
-        //         tradeAction: 'ENTRY',
-        //         tradeSide: 'LONG',
+        //         tradeAction: 'ENTRY',          // 开仓或平仓
+        //         tradeSide: 'LONG',             // 成交方向
         //         price: '472.6900000000',       // 成交价格
         //         orderPrice: '479.2200000000',  // 挂单价格
         //         quantity: '10.0000000000',     // 成交数量
