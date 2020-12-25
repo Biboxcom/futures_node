@@ -50,6 +50,7 @@ const PrivateUrl = {
     PLACE_ORDER: "/v3/cbc/order/open",
     CANCEL_ORDER: "/v3/cbc/order/close",
     QUERY_ORDER: "/v3.1/cquery/base_coin/orderById",
+    QUERY_OPEN_ORDER: "/v3/cbc/order/list",
     QUERY_ORDER_HISTORY: "/v3.1/cquery/base_coin/orderHistory",
     BATCH_CANCEL_ORDER: "/v3/cbc/order/closeBatch",
     CANCEL_ALL_ORDERS: "/v3/cbc/order/closeAll",
@@ -797,7 +798,25 @@ class BiboxFuturesClient extends BiboxFuturesClientBase {
     };
 
     /**
-     * 获取委托单
+     * 获取当前委托单
+     * @param symbol 合约名称
+     * @param page 页码
+     * @param size 每页条目
+     * @param tradeSide 多空方向
+     * @param tradeAction 开仓平仓
+     */
+    getOpenOrders = async ( symbol, page, size, tradeSide, tradeAction ) => {
+        let res = await this._postProxy( PrivateUrl.QUERY_OPEN_ORDER, {
+            "page": Number( page ) || 1,
+            "size": Number( size ) || 10,
+            "pair": symbol ? this._convertSymbol( symbol ) : undefined,
+            "order_side": ApiOrderSide.loopUpOrderSide( tradeSide, tradeAction ),
+        } );
+        return JsonUtil.openOrdersWrapper( res.result );
+    }
+
+    /**
+     * 获取历史委托单
      * @param symbol 合约名称
      * @param page 页码
      * @param size 每页条目
@@ -805,15 +824,15 @@ class BiboxFuturesClient extends BiboxFuturesClientBase {
      * @param tradeAction 开仓平仓
      * @param orderStatus 委托状态
      */
-    getOrdersByPage = async ( symbol, page, size, tradeSide, tradeAction, orderStatus ) => {
+    getClosedOrders = async ( symbol, page, size, tradeSide, tradeAction, orderStatus ) => {
         let res = await this._postProxy( PrivateUrl.QUERY_ORDER_HISTORY, {
             "page": Number( page ) || 1,
             "size": Number( size ) || 10,
             "pair": symbol ? this._convertSymbol( symbol ) : undefined,
             "side": ApiOrderSide.loopUpOrderSide( tradeSide, tradeAction ),
-            "status": ApiOrderStatus[orderStatus],
+            "status": ApiOrderStatus[orderStatus] ? [ ApiOrderStatus[orderStatus] ] : undefined
         } );
-        return JsonUtil.ordersByPageWrapper( res.result );
+        return JsonUtil.closedOrdersWrapper( res.result );
     }
 
     /**
@@ -1610,7 +1629,15 @@ class JsonUtil {
         } );
     };
 
-    static ordersByPageWrapper = ( obj ) => {
+    static openOrdersWrapper = ( obj ) => {
+        return {
+            count: obj.t,
+            page: obj.p,
+            items: obj.o.map( item => this.orderEventWrapper( item ) )
+        };
+    };
+    
+    static closedOrdersWrapper = ( obj ) => {
         return {
             count: obj.count,
             page: obj.page,

@@ -34,11 +34,13 @@ getOrders = async () => {
         // }
 
         let orders = await client.getOrders( [ "35184377957292", "39582455765897" ] );
-        // let orders = await client.getOrdersByClientOids( [ "1112223333", "123132124312" ] );
         console.log( orders );
 
-        let history = await client.getOrdersByPage();
-        console.log( history );
+        let open = await client.getOpenOrders( "BTC_USD", 1, 10 );
+        console.log( open );
+        
+        let closed = await client.getClosedOrders( "", 1, 10 );
+        console.log( closed );
 
     }catch ( e ) {
         console.log( e );
