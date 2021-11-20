@@ -3,7 +3,7 @@ const client = new BiboxFuturesClient();
 
 subscribeTrade = () => {
     client.subscribeTrade( "BTC_USD", ( data ) => {
-        console.log( data[0] );
+        console.log( data );
         // {
         //     symbol: '5BTC_USD',
         //     side: 'SHORT',
